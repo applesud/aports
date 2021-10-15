@@ -1,11 +1,13 @@
 #!/bin/sh
+# For use with the alpine-image-docker project that I made
 profile_custom(){
     title="Custom"
     desc="Customise it!"
     profile_standard
     profile_abbrev="cstm"
     apkovl="genapkovl-custom.sh"
-    apks="$apks `cat ~/packages`"
+    # Include all of the packages that are going to be installed by default
+    apks="$apks `cat ~/apkovldir/etc/apk/world`"
     local _k _a
     for _k in $kernel_flavors; do
             apks="$apks linux-$_k"
