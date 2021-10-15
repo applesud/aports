@@ -3,7 +3,7 @@
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 # Copy apkovl
-cp /home/apkovldir/* "$tmp"/
+cp -r ~/apkovldir/* "$tmp"/
 # Update hostname
 echo "$1" > "$tmp"/etc/hostname
 # Build
