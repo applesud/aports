@@ -6,5 +6,7 @@ trap 'rm -rf "$tmp"' EXIT
 cp -r ~/apkovldir/* "$tmp"/
 # Update hostname
 echo "$1" > "$tmp"/etc/hostname
+# Sync root home to /etc/skel
+cp -r "$tmp"/etc/skel "$tmp"/root
 # Build
-tar -c -C "$tmp" etc usr | gzip -9n > $HOSTNAME.apkovl.tar.gz
+(cd "$tmp" && tar -c *) | gzip -9n > $HOSTNAME.apkovl.tar.gz
